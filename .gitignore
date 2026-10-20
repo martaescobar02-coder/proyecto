@@ -1,8 +1,5 @@
-
-DB_MOTOR=sqlite
-DB_NOMBRE=ecotech.db
-DB_HOST=
-DB_USUARIO=proyecto 1
-DB_PASSWORD= 123456
-
+__pycache__/
+*.pyc
+.venv/
+.env
 

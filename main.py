@@ -1,23 +1,13 @@
 from dominio.empleado import Empleado
-from dominio.departamento import Departamento
 
-def main():
+empleado = Empleado(
+    1,
+    "Ana Rojas",
+    "Los Carrera 123",
+    "987654321",
+    "ana@correo.cl",
+    "2024-03-01",
+    950000
+)
 
-    empleado1 = Empleado(
-        1,
-        "elena avalor",
-        "San Pedro",
-        "987654321",
-        "elena@correo.cl",
-        850000
-    )
-
-    departamento_ti = Departamento("Tecnología")
-
-    departamento_ti.empleados.append(empleado1)
-
-    print(f"Departamento: {departamento_ti.nombre}")
-    print(f"Empleado: {empleado1.nombre}")
-
-if __name__ == "__main__":
-    main()
+print(empleado.nombre)

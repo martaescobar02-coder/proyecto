@@ -1,7 +1,4 @@
-from dominio.persona import Persona
-
-class Empleado(Persona):
-
+class Empleado:
     def __init__(
         self,
         id_empleado,
@@ -12,14 +9,10 @@ class Empleado(Persona):
         fecha_inicio_contrato,
         salario
     ):
-
-        super().__init__(
-            nombre,
-            direccion,
-            telefono,
-            correo
-        )
-
         self.id_empleado = id_empleado
+        self.nombre = nombre
+        self.direccion = direccion
+        self.telefono = telefono
+        self.correo = correo
         self.fecha_inicio_contrato = fecha_inicio_contrato
         self.salario = salario
