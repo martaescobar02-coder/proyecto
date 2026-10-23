@@ -1,5 +1,19 @@
+from dominio.persona import Persona
 from dominio.empleado import Empleado
 from infraestructura.conexion import obtener_conexion
+#tupla > objeto
+def fila_a_empleado(fila):
+    return Empleado(
+        fila[0],
+        fila[1],
+        fila[2],
+        fila[3],
+        fila[4],
+        fila[5],
+        fila[6],
+        fila[7]
+    )
+
 
 # Crear objeto
 empleado = Empleado(
@@ -12,6 +26,17 @@ empleado = Empleado(
     "2024-03-01",
     950000
 )
+
+persona = Persona(
+    "11111111-1",
+    "Juan Perez"
+)
+objetos = [persona, empleado]
+
+for obj in objetos:
+    print(obj.mostrar_datos())
+
+
 
 print(empleado.nombre)
 print(empleado.mostrar_salario())
