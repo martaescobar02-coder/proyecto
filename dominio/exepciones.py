@@ -1,13 +1,8 @@
-class EcoTechError(Exception):
-    """Excepción base para errores del sistema EcoTech."""
-    pass
+from dominio.excepciones import EcoTechError
 
+try:
+    conexion = sqlite3.connect("db/ecotech.db")
+    return conexion
 
-class RutDuplicadoError(EcoTechError):
-    """Se lanza cuando se intenta registrar un empleado con un RUT existente."""
-    pass
-
-
-class SueldoInvalidoError(EcoTechError, ValueError):
-    """Se lanza cuando el sueldo no cumple las restricciones laborales."""
-    pass
+except sqlite3.Error as e:
+    raise EcoTechError(f"Error de conexión a la base de datos: {e}")
