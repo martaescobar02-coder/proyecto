@@ -1,7 +1,9 @@
 from dominio.persona import Persona
 from dominio.empleado import Empleado
 from infraestructura.conexion import obtener_conexion
-#tupla > objeto
+
+
+# Tupla -> Objeto
 def fila_a_empleado(fila):
     return Empleado(
         fila[0],
@@ -15,7 +17,7 @@ def fila_a_empleado(fila):
     )
 
 
-# Crear objeto
+# Crear objeto Empleado
 empleado = Empleado(
     1,
     "12345678-9",
@@ -27,25 +29,29 @@ empleado = Empleado(
     950000
 )
 
+# Crear objeto Persona
 persona = Persona(
     "11111111-1",
     "Juan Perez"
 )
+
+# Polimorfismo
 objetos = [persona, empleado]
 
 for obj in objetos:
     print(obj.mostrar_datos())
 
-
-
 print(empleado.nombre)
 print(empleado.mostrar_salario())
+
 
 # Conexión
 conexion = obtener_conexion()
 
 if conexion:
     print("Conexión exitosa")
+
+    cursor = conexion.cursor()
 
     # Validaciones
     nombre = empleado.nombre
@@ -60,7 +66,7 @@ if conexion:
     else:
         print("Datos válidos")
 
-        cursor = conexion.cursor()
+    try:
 
         # CREATE
         cursor.execute("""
@@ -111,5 +117,10 @@ if conexion:
         conexion.commit()
         print("Empleado eliminado")
 
-        # Cerrar conexión
+    except Exception as e:
+        conexion.rollback()
+        print("Error durante la transacción:", e)
+
+    finally:
         conexion.close()
+        print("Conexión cerrada")

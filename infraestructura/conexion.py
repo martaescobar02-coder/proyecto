@@ -1,8 +1,10 @@
-from dominio.excepciones import EcoTechError
+import sqlite3
 
-try:
-    conexion = sqlite3.connect("db/ecotech.db")
-    return conexion
+def obtener_conexion():
+    try:
+        conexion = sqlite3.connect("db/ecotech.db")
+        return conexion
 
-except sqlite3.Error as e:
-    raise EcoTechError(f"Error de conexión a la base de datos: {e}")
+    except sqlite3.Error as e:
+        print("Error de conexión:", e)
+        return None
